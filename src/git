@@ -1,0 +1,17 @@
+alias gp='git pull'
+alias gs='git status'
+alias glf='git ls-files'
+ 
+if [ -x "$(command -v batcat)" ]; then
+    alias gd='git diff --name-only --relative --diff-filter=d | xargs bat --diff'
+else
+    alias gd='git diff'
+fi
+
+function gc(){
+    git commit -m "$*"
+}
+
+# Useful when working on a branch and 
+# want to summarize changes against master
+alias gdmno='git diff master  --name-only'

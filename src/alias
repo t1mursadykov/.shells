@@ -1,0 +1,13 @@
+# Avoid mistakes
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Get representation of underlying files and folders as a tree.
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+# Open any file using its default program (eg. pdfs, torrents, etc).
+alias open="xdg-open"
+
+## My personal dirs
+alias code="cd $HOME/code"

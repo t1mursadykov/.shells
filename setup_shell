@@ -1,0 +1,61 @@
+########
+# INFO #
+########
+
+export USERNAME="Timur Sadykov"
+export NICKNAME="t1mursadykov"
+
+########
+# PATH #
+########
+
+export PATH=$HOME/bin:$PATH
+
+#########################
+# Check the environment #
+#########################
+
+if [[ ! -d "$HOME/bin" ]] ; then
+    echo "Creating $HOME/bin directory"
+    mkdir $HOME/bin
+fi
+
+if [[ ! -d "$HOME/code" ]] ; then
+    echo "Creating $HOME/code directory"
+    mkdir $HOME/code
+fi
+
+
+######################
+# Utilities settings #
+######################
+
+
+if [ -x "$(command -v batcat)" ]; then
+    if ! [ -x "$(command -v bat)" ]; then
+      echo "Creating symsilk for batcat" >&2
+      ln -s /usr/bin/batcat $HOME/bin/bat
+    fi
+
+    function help() {
+      "$@" --help 2>&1 | bat --plain --language=help
+    }
+else
+    echo 'Error: batcat is not installed.' >&2
+fi
+
+if [ -x "$HOME/bin/nvim.appimage" ]; then
+    alias nvim=nvim.appimage
+else
+    echo 'Error: neovim is not installed.' >&2
+fi
+
+
+########################
+# Environment settings #
+########################
+
+source src/alias
+source src/func
+source src/git
+
